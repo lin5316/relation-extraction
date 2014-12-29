@@ -3,7 +3,7 @@ sys.path.append('.')
 
 from feature_generator import feature_generator
 
-def main(num_neighbors = 2):
+def main(num_neighbors = 3):
     input_file = open('test/data.txt','r')
     output_file = file('test/feature.txt','w+')
     output_xml = file('test/record.txt', 'w+')

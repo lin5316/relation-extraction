@@ -4,7 +4,7 @@ sys.path.append('.')
 import re
 from feature_generator import feature_generator
 
-def main(num_neighbors = 2):
+def main(num_neighbors = 3):
     input_file = open('train/data.txt','r')
     output_file = file('train/feature.txt','w+')
     fg = feature_generator()

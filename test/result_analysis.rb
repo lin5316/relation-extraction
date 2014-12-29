@@ -23,9 +23,11 @@ while results_index<results.length
         if result_element[2]==answer_element[2]
           exact_same=exact_same+1
           fuzzy_same=fuzzy_same+1
+          break
         else
           if result_element[2].include?answer_element[2] or answer_element[2].include?result_element[2]
             fuzzy_same=fuzzy_same+1
+            break
           end
           next
         end
