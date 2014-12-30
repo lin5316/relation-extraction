@@ -39,9 +39,9 @@ def main(num_neighbors = 3, neg_rate = 100):
     input_file.close()
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
+    if len(sys.argv) == 2:
         main(eval(sys.argv[1]))
-    elif len(sys.argv) == 2:
+    elif len(sys.argv) == 3:
         main(eval(sys.argv[1]), eval(sys.argv[2]))
     else:
         main()
