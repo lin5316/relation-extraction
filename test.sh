@@ -13,3 +13,4 @@ python test/generate_ground_truth.py
 
 echo $2 >> eval_neg_rate
 ruby test/result_analysis.rb >> eval_neg_rate
+cp relation_extraction.model relation_extraction.model.$2
