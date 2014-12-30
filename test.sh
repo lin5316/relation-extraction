@@ -11,4 +11,5 @@ python test/predict_result.py
 echo 'generating ground truth...'
 python test/generate_ground_truth.py
 
-ruby test/result_analysis.rb
+echo $2
+ruby test/result_analysis.rb >> eval_neg_rate

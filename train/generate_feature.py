@@ -4,11 +4,12 @@ sys.path.append('.')
 import re
 from feature_generator import feature_generator
 
-def main(num_neighbors = 3):
+def main(num_neighbors = 3, neg_rate = 100):
     input_file = open('train/data.txt','r')
     output_file = file('train/feature.txt','w+')
     fg = feature_generator()
     fg.set_num_neighbors(num_neighbors)
+    fg.set_neg_rate(neg_rate)
 
     while (1):
         line_content = input_file.readline()
@@ -38,7 +39,9 @@ def main(num_neighbors = 3):
     input_file.close()
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
+    if len(sys.argv) == 1:
         main(eval(sys.argv[1]))
+    elif len(sys.argv) == 2:
+        main(eval(sys.argv[1]), eval(sys.argv[2]))
     else:
         main()

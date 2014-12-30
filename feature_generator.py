@@ -5,6 +5,7 @@ class feature_generator:
     def __init__(self):
         self.set_num_neighbors(2)
         self.set_attrs(["n","x","nr","v"])
+        self.set_neg_rate(100)
 
     def set_num_neighbors(self, num_neighbors):
         self.num_neighbors = num_neighbors
@@ -14,13 +15,16 @@ class feature_generator:
         for i in range(len(attr_list)):
             self.attrs[attr_list[i]] = i + 1
 
+    def set_neg_rate(self, neg_rate):
+        self.neg_rate = neg_rate
+
     def get_feature_str(self, pos, idx, words):
         feature_str = ""
         for i in range(idx - self.num_neighbors, idx + self.num_neighbors + 1):
             if i == idx:
                 continue
 
-            pos += 1    
+            pos += 1
             if i < 0:
                 continue
             if i >= len(words):
@@ -65,6 +69,9 @@ class feature_generator:
                         if (nrs[k].find(words[nr_idx].word)>=0) and (nts[k].find(words[nt_idx].word)>=0):
                             p = 1
                             break
+                    if p == -1:
+                        if random.randint(1, 100) > self.neg_rate:
+                            continue
 
                 feature_strs += "%d 1:%d" % (p, nt_idx - nr_idx)
                 #feature_strs += "%d 1:%f" % (p, (nt_idx - nr_idx) * 1.0 / len(words))
